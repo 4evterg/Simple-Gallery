@@ -1,0 +1,217 @@
+:root {
+  font-size: 14px;
+  /* Настройки */
+  --textbgco: 0.85; /* прозрачность задника текста */
+  --preview-margin: 20px;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(
+    160deg,
+    rgb(175, 175, 175),
+    rgb(175, 175, 175) 40%,
+    rgb(160, 160, 160),
+    rgb(160, 160, 160) 20px,
+    rgb(145, 145, 145),
+    rgb(145, 145, 145) 20px 75%,
+    rgb(130, 130, 130),
+    rgb(130, 130, 130) 40px 85%,
+    rgb(115, 115, 115),
+    rgb(115, 115, 115) 40px 93%,
+    rgb(100, 100, 100),
+    rgb(100, 100, 100) 40px 100%
+  );
+  background-size: 1000%;
+  animation: gradient 35s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 50px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 4px 4px 4px #000, -1px -1px 5px hsla(180deg, 100%, 100%, 0.5);
+}
+
+.descrip {
+  background-color: hsla(180deg, 100%, 100%, var(--textbgco));
+  position: absolute;
+  font-size: 1.2rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.descrip h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-bg {
+  cursor: pointer;
+  position: absolute;
+  background-color: #fff;
+  height: 100%;
+  width: 50px;
+  opacity: 0.3;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-bg:hover {
+  opacity: var(--textbgco);
+}
+
+.next-bg {
+  right: -50px;
+  top: 0;
+}
+
+.prev-bg {
+  left: -50px;
+  top: 0;
+  /* border: 1px solid red; */
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 14px;
+}
+
+.arrow-prev {
+  right: 0px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+}
+
+.arrow-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.light {
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .arrow,
+  .light .arrow {
+    background-size: 10px;
+    background-position: 10px 50%;
+  }
+}
+
+#current-item {
+  /* z-index: 2;
+  opacity: 1; */
+  background: url("../images/0.jpg");
+  background-size: cover;
+}
+
+#preview {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: var(--preview-blockh);
+  white-space: nowrap;
+}
+#preview div {
+  position: relative;
+  display: inline-block;
+  background-size: cover;
+  background-color: #fff;
+  left: -200px;
+  width: 200px;
+  height: 200px;
+  /* box-shadow: inset 50px 50px #000; */
+  transition: all 0.5s ease-in-out;
+  margin: var(--preview-margin);
+  opacity: 0.3;
+  box-shadow: inset 11px 11px #000, inset -11px -11px #000;
+}
+.move {
+  left: -200px;
+}
+
+#preview div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 10px solid #fff;
+  box-shadow: 4px 4px 4px #000, -1px -1px 5px hsla(180deg, 100%, 100%, 0.5);
+}
+#preview div:after {
+  content: "\A";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+  transition: all 0.5s linear;
+}
+#preview div:hover:after {
+  opacity: 0;
+}
+#preview div:hover {
+  opacity: 0.8;
+}
+#preview div:nth-child(4) {
+  opacity: 1;
+}
+#preview div:nth-child(4):after {
+  opacity: 0;
+}
+.teser {
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  width: 416px;
+  height: 315px;
+  z-index: 1;
+  opacity: 0.3;
+  transition: all 0.5s linear;
+  box-shadow: inset 10px -10px 10px rgba(red, green, blue, 0);
+}
+
+#prev {
+  left: 0;
+}
+#next {
+  right: 0;
+  background-image: url("../images/1.jpg");
+  transform: scaleX(-1);
+  /*clip: rect(40px, auto, auto, 40px);*/
+}

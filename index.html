@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Галлерея</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/sModal.css" />
+  </head>
+  <body>
+    <!-- sModal background blur -->
+    <div id="sModal" class="sModal"></div>
+
+    <div id="sm-content" class="sModal-content">
+      <span class="sModal-close">&times;</span>
+      <div class="descrip" id="pop-desc">
+        <h1>Безродителев Бэтмен Брюсвейнович</h1>
+        <p>
+          Мафиози
+        </p>
+      </div>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-item" id="current-item" onclick="show();">
+        <div class="descrip" id="flat-desc">
+          <h1>Безродителев Бэтмен Брюсвейнович</h1>
+          <p>
+            Мафиози
+          </p>
+        </div>
+      </div>
+      <div class="nav-bg prev-bg" onclick="carousel('prev')">
+        <div class="arrow arrow-prev"></div>
+      </div>
+      <div class="nav-bg next-bg" onclick="carousel('next')">
+        <div class="arrow arrow-next"></div>
+      </div>
+    </div>
+    <div class="teser" id="prev" onclick="carousel('prev')"></div>
+    <div class="teser" id="next" onclick="carousel('next')"></div>
+    <div id="preview"></div>
+    <script src="common.js"></script>
+    <script src="modal.js"></script>
+    <script>
+      init();
+    </script>
+  </body>
+</html>
